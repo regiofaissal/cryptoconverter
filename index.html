@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conversor de moedas e criptomoedas em tempo real com taxas atualizadas minuto a minuto">
+    <title>CryptoConverter</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="favicon.png" alt="Logo Conversor" class="logo-img">
+                <span>CryptoConverter</span>
+            </div>
+            <nav>
+                <a href="#conversor">Conversor</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#criptomoedas">Criptomoedas</a>
+                <a href="#faq">FAQ</a>
+                <a href="#newsletter">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Conversor de Moedas e Criptomoedas em Tempo Real</h1>
+        <p>Converta moedas e criptoativos instantaneamente com taxas atualizadas minuto a minuto.</p>
+        <a href="#conversor" class="cta-button">Experimente Agora</a>
+        <div class="animated-icon">
+            <i data-lucide="trending-up" class="icon-animate"></i>
+        </div>
+    </section>
+
+    <div class="container" id="conversor">
+        <div class="converter-box">
+            <div class="input-group">
+                <input type="number" id="amount" placeholder="Digite o valor">
+                <select id="from-currency">
+                    <!-- Será populado pelo JavaScript -->
+                </select>
+            </div>
+
+            <button id="swap-button">⇅</button>
+
+            <div class="input-group">
+                <input type="number" id="result" readonly>
+                <select id="to-currency">
+                    <!-- Será populado pelo JavaScript -->
+                </select>
+                <button id="share-button" title="Compartilhar conversão">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <button id="convert-button">Converter</button>
+        </div>
+
+        <div class="history-section">
+            <h2>Histórico de Conversões</h2>
+            <div id="history-list"></div>
+        </div>
+    </div>
+
+    <section id="sobre" class="section sobre">
+        <h2>Sobre o Conversor</h2>
+        <p>Nosso conversor oferece uma solução completa para todas as suas necessidades de conversão de moedas e criptomoedas.</p>
+        
+        <div class="beneficios">
+            <div class="beneficio-item">
+                <i data-lucide="check-circle" class="beneficio-icon"></i>
+                <h3>Gratuito</h3>
+                <p>Sem custos ou taxas escondidas</p>
+            </div>
+            <div class="beneficio-item">
+                <i data-lucide="zap" class="beneficio-icon"></i>
+                <h3>Rápido</h3>
+                <p>Conversão instantânea</p>
+            </div>
+            <div class="beneficio-item">
+                <i data-lucide="refresh-cw" class="beneficio-icon"></i>
+                <h3>Tempo Real</h3>
+                <p>Dados sempre atualizados</p>
+            </div>
+            <div class="beneficio-item">
+                <i data-lucide="mouse-pointer" class="beneficio-icon"></i>
+                <h3>Fácil de Usar</h3>
+                <p>Interface intuitiva</p>
+            </div>
+        </div>
+
+        <div class="fonte-info">
+            <p>Dados fornecidos por:</p>
+            <div class="fonte-logos">
+                <img src="https://static.coingecko.com/s/coingecko-logo-8903d34ce19ca4be1c81f0db30e924154750d208683fad7ae6f2ce06c76d0a56.png" alt="CoinGecko" height="30">
+                <!-- <img src="https://www.exchangerate-api.com/img/logo-light.svg" alt="ExchangeRate-API" height="30"> -->
+            </div>
+        </div>
+    </section>
+
+    <section id="criptomoedas" class="section criptos">
+        <h2>Preços da criptomoeda por capitalização de mercado</h2>
+        <div class="cripto-table-container">
+            <table class="cripto-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Moeda</th>
+                        <th>Preço</th>
+                        <th>24h %</th>
+                        <th>Volume 24h</th>
+                        <th>Cap. de Mercado</th>
+                        <th>Últimas 24h</th>
+                    </tr>
+                </thead>
+                <tbody id="cripto-table-body">
+                    <!-- Dados serão preenchidos via JavaScript -->
+                    <tr class="loading-row">
+                        <td colspan="7" class="loading-message">
+                            <div class="loading-spinner"></div>
+                            <p>Carregando dados das criptomoedas...</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <button id="prev-page" class="page-button" disabled>Anterior</button>
+            <span id="page-info">Página 1 de 10</span>
+            <button id="next-page" class="page-button">Próxima</button>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="section steps">
+        <h2>Como Funciona</h2>
+        <div class="steps-container">
+            <div class="step">
+                <i data-lucide="list" class="step-icon"></i>
+                <h3>Escolha sua moeda</h3>
+                <p>Selecione entre moedas tradicionais ou criptomoedas</p>
+            </div>
+            <div class="step">
+                <i data-lucide="keyboard" class="step-icon"></i>
+                <h3>Digite o valor</h3>
+                <p>Insira a quantia que deseja converter</p>
+            </div>
+            <div class="step">
+                <i data-lucide="check" class="step-icon"></i>
+                <h3>Veja o resultado</h3>
+                <p>Obtenha a conversão instantânea</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section faq">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>Como os dados são atualizados?</summary>
+                <p>Nossos dados são atualizados em tempo real através de APIs confiáveis como CoinGecko e ExchangeRate-API, garantindo as cotações mais precisas.</p>
+            </details>
+            <details class="faq-item">
+                <summary>As taxas incluem taxas de corretora?</summary>
+                <p>Não, as taxas mostradas são apenas as cotações de mercado. Corretoras podem aplicar taxas adicionais nas operações reais.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Qual a precisão das cotações?</summary>
+                <p>Para moedas tradicionais, trabalhamos com precisão de 2 casas decimais. Para criptomoedas, utilizamos 8 casas decimais para maior exatidão.</p>
+            </details>
+            <details class="faq-item">
+                <summary>É seguro usar esse site?</summary>
+                <p>Sim! Nosso site é apenas informativo e não realiza transações financeiras. Utilizamos apenas APIs seguras e confiáveis para obter os dados.</p>
+            </details>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section newsletter">
+        <h2>Fique Atualizado</h2>
+        <p>Receba atualizações de mercado direto no seu email</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Seu melhor email" required>
+            <button type="submit" class="cta-button">Quero Receber</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter" class="social-icon"></i></a>
+                <a href="#" aria-label="GitHub"><i data-lucide="github" class="social-icon"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" class="social-icon"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">APIs Utilizadas</a>
+            </div>
+            <p class="copyright">Desenvolvido por CryptoConverter © 2025</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Inicializa os ícones Lucide
+        lucide.createIcons();
+    </script>
+</body>
+</html>

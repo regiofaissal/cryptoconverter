@@ -1,0 +1,113 @@
+/* Seção Criptomoedas */
+.cripto-table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cripto-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.cripto-table th,
+.cripto-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.cripto-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #1e3c72;
+}
+
+.cripto-table tr:hover {
+    background: #f8f9fa;
+}
+
+.cripto-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cripto-name img {
+    width: 24px;
+    height: 24px;
+}
+
+.cripto-symbol {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.price-change-positive {
+    color: #28a745;
+}
+
+.price-change-negative {
+    color: #dc3545;
+}
+
+.loading-row td {
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #eee;
+    border-top: 4px solid #1e3c72;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.page-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background: white;
+    color: #1e3c72;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-button:not(:disabled):hover {
+    background: #f8f9fa;
+}
+
+#page-info {
+    font-size: 0.9rem;
+    color: #666;
+}
